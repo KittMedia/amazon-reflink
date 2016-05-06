@@ -1,0 +1,195 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400);
+
+
+/* general */
+
+html,
+body {
+	color: #04314b;
+	font-family: "Source Sans Pro", "Lucida Sans", "Lucida Grande", Monaco, Geneva, sans-serif;
+	font-size: 15px;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #186e9f;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #095581;
+}
+
+dl {
+	margin-bottom: 40px;
+	margin-top: 0;
+}
+
+dt {
+	float: left;
+	width: 150px;
+}
+
+dd {
+	margin-left: 150px;
+	text-align: right;
+	width: 60px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400;
+	margin: 0;
+}
+
+h1 {
+	font-size: 26px;
+	padding-bottom: 10px;
+}
+
+h3 {
+	font-size: 20px;
+	padding-bottom: 5px;
+}
+
+header {
+	background-color: #dfe9ef;
+	border-radius: 2px;
+	cursor: pointer;
+	padding: 5px 13px;
+}
+
+label {
+	cursor: pointer;
+	display: inline-block;
+	font-size: 1rem;
+	width: 50%;
+}
+
+li:not(:last-child) {
+	padding-bottom: 10px;
+}
+
+small {
+	font-size: .85rem;
+}
+
+ul {
+	padding-left: 1.5rem;
+}
+
+
+/* layout */
+
+#page {
+	margin: 0 auto;
+	max-width: 600px;
+	width: 100%;
+}
+
+#content {
+	padding: 25px;
+}
+
+.refcodeContainer {
+	font-size: 0;
+	padding: 10px 0;
+}
+
+#javaScriptContent {
+	padding-top: 30px;
+}
+
+.badge {
+	background-color: #186e9f;
+	border-radius: 2px;
+	color: #fff;
+	font-size: .85rem;
+	padding: 2px 5px;
+	vertical-align: 3px;
+}
+
+.date {
+	border-bottom: 1px solid #dfe9ef;
+}
+
+.date:not(:last-child) {
+	margin-bottom: 30px;
+}
+
+.light {
+	color: #526f80;
+}
+
+.loading {
+	padding: 10px 0;
+	text-align: center;
+}
+
+
+/* form */
+
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	background-color: #fff;
+	border: 1px solid #dfe9ef;
+	border-radius: 2px;
+	box-sizing: border-box;
+	font-size: 1rem;
+	height: 100px;
+	min-height: 100px;
+	outline: none;
+	padding: 5px 8px;
+	resize: vertical;
+	width: 100%;
+}
+
+textarea:hover,
+textarea:focus {
+	border-color: #1eaff1;
+}
+
+
+/* input */
+
+button,
+input[type="submit"],
+input[type="reset"] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-color: #1eaff1;
+	border-color: #186e9f;
+	border-radius: 2px;
+	border-style: solid;
+	border-width: 0 0 2px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 400;
+	padding: 5px 13px;
+}
+
+button:hover,
+input[type="reset"]:hover {
+	background-color: #186e9f;
+	border-color: #04314b;
+}
+
+input[type="submit"] {
+	background-color: #186e9f;
+	border-color: #04314b;
+}
+
+input[type="submit"]:hover {
+	background-color: #166592;
+	border-color: #01111b;
+}
