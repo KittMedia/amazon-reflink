@@ -3,7 +3,7 @@ require_once(__DIR__ . '/config.inc.php');
 require_once(__DIR__ . '/lib/data/Reflink.class.php');
 
 $reflink = new Reflink();
-$enabledRefcodes = $reflink->getEnabledRefcode();
+$enabledRefcodes = $reflink->getEnabledRefcodes();
 ?>
 <!DOCTYPE html>
 <html lang="de">

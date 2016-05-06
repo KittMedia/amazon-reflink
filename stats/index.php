@@ -4,7 +4,7 @@ require_once(__DIR__ . '/../lib/data/Reflink.class.php');
 
 $reflink = new Reflink();
 $reflinkList = $reflink->getReflinks();
-$enabledRefcodeList = $reflink->getEnabledRefcode();
+$enabledRefcodeList = $reflink->getEnabledRefcodes();
 ?>
 <!DOCTYPE html>
 <html lang="de">

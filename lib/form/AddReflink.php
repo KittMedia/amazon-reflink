@@ -16,13 +16,13 @@ $data = filter_input_array(INPUT_POST, $args);
 $finalLinks = array();
 $links = explode(PHP_EOL, trim(str_replace("\r", '', $data['links'])));
 
-if (empty($links[0]) || !$reflink->isAmazonLink($links[0])) {
+if (empty($links[0]) || !$reflink::isAmazonLink($links[0])) {
 	echo '{"link":""}';
 	return;
 }
 
 foreach ($links as $link) {
-	if (!$reflink->isAmazonLink($link)) continue;
+	if (!$reflink::isAmazonLink($link)) continue;
 	
 	$link = StringUtil::checkUrl($link);
 	

@@ -50,10 +50,10 @@ class Reflink {
 	 * Add a new reflink.
 	 * 
 	 * @param	string		$link
-	 * @param	integer		$refcode
+	 * @param	integer		$refcodeID
 	 * @param	string		$title
 	 */
-	public function addReflink($link, $refcode, $title) {
+	public function addReflink($link, $refcodeID, $title) {
 		// insert reflink
 		$sql = $this->db->prepare(
 			"INSERT INTO	reflink
@@ -62,7 +62,7 @@ class Reflink {
 		);
 		
 		try {
-			$sql->execute(array($link, TIME_NOW, $refcode, $title));
+			$sql->execute(array($link, TIME_NOW, $refcodeID, $title));
 		}
 		catch (PDOException $e) {
 			echo $e->getMessage();
@@ -72,9 +72,9 @@ class Reflink {
 	/**
 	 * Disable a refcode.
 	 * 
-	 * @param	int		$refcode
+	 * @param	integer		$refcodeID
 	 */
-	public function disableRefcode($refcode) {
+	public function disableRefcode($refcodeID) {
 		// disable refcode
 		$sql = $this->db->prepare(
 			"UPDATE		refcode
@@ -83,7 +83,7 @@ class Reflink {
 		);
 		
 		try {
-			$sql->execute(array(1, $refcode));
+			$sql->execute(array(1, $refcodeID));
 		}
 		catch (PDOException $e) {
 			echo $e->getMessage();
@@ -93,9 +93,9 @@ class Reflink {
 	/**
 	 * Enable a refcode.
 	 * 
-	 * @param	int		$refcode
+	 * @param	integer		$refcodeID
 	 */
-	public function enableRefcode($refcode) {
+	public function enableRefcode($refcodeID) {
 		// enable refcode
 		$sql = $this->db->prepare(
 			"UPDATE		refcode
@@ -104,7 +104,7 @@ class Reflink {
 		);
 		
 		try {
-			$sql->execute(array(0, $refcode));
+			$sql->execute(array(0, $refcodeID));
 		}
 		catch (PDOException $e) {
 			echo $e->getMessage();
@@ -116,7 +116,7 @@ class Reflink {
 	 * 
 	 * @return	array
 	 */
-	public function getEnabledRefcode() {
+	public function getEnabledRefcodes() {
 		$sql = $this->db->prepare(
 			"SELECT		*
 			FROM		refcode
@@ -141,8 +141,8 @@ class Reflink {
 	 * @return	string
 	 */
 	public function getRandomRefcode() {
-		$enabledRefcodes = self::getEnabledRefcode();
-		$i = rand(0, (count($enabledRefcodes) - 1));
+		$enabledRefcodes = self::getEnabledRefcodes();
+		$i = mt_rand(0, (count($enabledRefcodes) - 1));
 		
 		return $enabledRefcodes[$i];
 	}
@@ -172,6 +172,11 @@ class Reflink {
 		return $refcode;
 	}
 	
+	/**
+	 * Get all reflinks from database.
+	 * 
+	 * @return	array
+	 */
 	public function getReflinks() {
 		$sql = $this->db->prepare(
 			"SELECT		*
