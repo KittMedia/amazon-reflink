@@ -24,34 +24,33 @@ $(function() {
 			type: 'POST',
 			data: postData,
 			dataType: 'json',
-			cache: false,
-			success: function(data) {
-				var content = data;
-				var htmlContent = '';
-				
-				if (content.length > 1) {
-					htmlContent = '<h3>Umgewandelte Links:</h3>';
-				}
-				else if (typeof content.length !== 'undefined') {
-					htmlContent = '<h3>Umgewandelter Link:</h3>';
-				}
-				
-				$.each(content, function(index, value) {
-					if (value['link'].length <= 1) {
-						javaScriptContent.text('Keine URL angegeben.');
-					}
-					else {
-						htmlContent = htmlContent + '<a href="' + value['link'] + '">' + value['title'] + '</a> <span class="light">&ndash; Referrer: ' + value['refcode'] + '</span><br />';
-						javaScriptContent.html(htmlContent);
-					}
-				});
+			cache: false
+		}).done(function(data) {
+			var content = data;
+			var htmlContent = '';
+			
+			if (content.length > 1) {
+				htmlContent = '<h3>Umgewandelte Links:</h3>';
 			}
+			else if (typeof content.length !== 'undefined') {
+				htmlContent = '<h3>Umgewandelter Link:</h3>';
+			}
+			
+			$.each(content, function(index, value) {
+				if (value['link'].length <= 1) {
+					javaScriptContent.text('Keine/Falsche URL angegeben.');
+				}
+				else {
+					htmlContent = htmlContent + '<a href="' + value['link'] + '">' + value['title'] + '</a> <span class="light">&ndash; Referrer: ' + value['refcode'] + '</span><br />';
+					javaScriptContent.html(htmlContent);
+				}
+			});
 		});
 	});
 	
 	// click on statistics month
-	$('.date').click(function(event) {
-		$(this).children('ul').animate({
+	$('.date > header').click(function(event) {
+		$(this).siblings('ul').animate({
 			'height': 'toggle'
 		});
 	});
