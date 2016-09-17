@@ -30,15 +30,12 @@ class StringUtil {
 	 * @return	string
 	 */
 	public static function getUrlTitle($url) {
-		$curl = curl_init();
-		
-		curl_setopt($curl, CURLOPT_URL, $url);
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-		preg_match("/\<title.*\>(.*)\<\/title\>/isU", curl_exec($curl), $match);
-		curl_close ($curl);
-		
-		$urlTitle = html_entity_decode($match[1], ENT_QUOTES);
-		
-		return $urlTitle;
+		$str = file_get_contents($url);
+		if(strlen($str)>0){
+			$str = trim(preg_replace('/\s+/', ' ', $str)); // supports line breaks inside <title>
+			preg_match("/\<title\>(.*)\<\/title\>/i",$str,$title); // ignore case
+			
+			return $title[1];
+		}
 	}
 }

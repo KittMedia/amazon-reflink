@@ -51,7 +51,7 @@ $enabledRefcodeList = $reflink->getEnabledRefcodes();
 			<ul style="display: none;">
 				<?php foreach ($date as $link): ?>
 				<li>
-					<a href="<?php echo $link['reflink']; ?>"><?php echo $link['reflinkTitle']; ?></a><br />
+					<a href="<?php echo $link['reflink']; ?>"><?php echo ($link['reflinkTitle'] ?: 'Kein Titel'); ?></a><br />
 					<span class="light">Referrer: <?php echo $link['displayName']; ?> &ndash; <?php echo date('d.m.Y, H:i', $link['inputTime']); ?> Uhr</span>
 				</li>
 				<?php endforeach; ?>
