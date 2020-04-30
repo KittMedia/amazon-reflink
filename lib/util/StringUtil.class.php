@@ -3,7 +3,7 @@
  * String operations.
  * 
  * @author Matthias Kittsteiner
- * @copyright 2016 Matthias Kittsteiner
+ * @copyright 2020 Matthias Kittsteiner
  * @license <internal>
  */
 class StringUtil {
@@ -31,11 +31,18 @@ class StringUtil {
 	 */
 	public static function getUrlTitle($url) {
 		$str = file_get_contents($url);
-		if(strlen($str)>0){
+		
+		if (strlen($str) > 0){
 			$str = trim(preg_replace('/\s+/', ' ', $str)); // supports line breaks inside <title>
-			preg_match("/\<title\>(.*)\<\/title\>/i",$str,$title); // ignore case
+			preg_match('/<title([^>]*)>([^>]*)<\/title>/i', $str, $title); // ignore case
 			
-			return $title[1];
+			if (!empty($title[2])) {
+				return $title[2];
+			}
+			
+			return 'Titel konnte nicht abgerufen werden';
 		}
+		
+		return 'Titel konnte nicht abgerufen werden';
 	}
 }
