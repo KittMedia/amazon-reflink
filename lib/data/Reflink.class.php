@@ -187,7 +187,7 @@ class Reflink {
 		);
 		
 		try {
-			$sql->execute(array(0));
+			$sql->execute(array());
 		}
 		catch (PDOException $e) {
 			echo $e->getMessage();
